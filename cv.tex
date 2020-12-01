@@ -1,5 +1,12 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
+
+% Resume type
+% 1: System Administration
+% 2: Programming
+\def\cvtype{2}
+
+% Document configuration
 \documentclass[11pt]{article}
 \usepackage[a4paper, portrait, margin=1.4cm]{geometry}
 \usepackage{fontspec}
@@ -11,15 +18,27 @@
 \usepackage{enumitem}
 \usepackage{flafter}
 \usepackage{graphicx}
-\definecolor{mygreen}{HTML}{3A7F6D}
-\graphicspath{ {./images/} }
+
+% Headline colors
+\definecolor{green}{HTML}{3A7F6D}
+
+% Font
 \setmainfont[Mapping=tex-text,BoldFont=NimbusSanL-Bol.otf,ItalicFont=NimbusSanL-RegIta.otf]{NimbusSanL-Reg.otf}
+
 \begin{document}
 \raggedright
-\textcolor{mygreen}{{\fontsize{25}{30}\textbf{Morten Jakeobsen}}}\newline
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{Site Reliability Engineer}}}\newline
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Profile}}}}\newline
+% Profile section
+\textcolor{green}{{\fontsize{25}{30}\textbf{Morten Jakobsen}}}\newline
+\if\cvtype1
+    \textcolor{green}{{\fontsize{13}{16}\textbf{System administrator and software developer}}}\newline
+\fi\if\cvtype2
+    \textcolor{green}{{\fontsize{13}{16}\textbf{Site Reliability Engineer}}}\newline
+\fi
+
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Profile}}}}\newline
+
+\if\cvtype1 % System administration profile
 
 Passionate and creative system administrator with five years of professional experience. During my career I have
 built numerous solutions and systems and I have been supporting a growing number of end users over the phone,
@@ -28,46 +47,56 @@ projects with things like migrating server rooms and building customer products.
 and automate systems to make things easier to use. I do this through simplistic design and robust functionality.
 I’m a keen learner, and I like to explore new technology to expand my knowledge.\newline
 
-\textcolor{mygreen}{{\fontsize{13}{0}\textbf{{Skills}}}}
+\fi\if\cvtype2 % Site Reliability Engineer profile
+
+I'm a highly motivated Site Reliability Engineer with a broad general knowledge of IT operations and I have a
+life long passion for building and maintaining scaleable platforms. I am very comfortable with both software
+development and IT operations, and use my knowledge on Linux, hypervisors and containers to design, build and
+maintaining platforms.\newline
+
+\fi % End of profile
+
+\textcolor{green}{{\fontsize{13}{0}\textbf{{Skills}}}}
 \begin{multicols}{3}
 Python\newline
 PHP\newline
+LUA\newline
 HTML\newline
 CSS\newline
 Shell Scripting\newline
+
+Linux\newline
+ArangoDB\newline
+Redis\newline
 MySQL\newline
 SQLite\newline
-Linux\newline
 Git\newline
-GitHub\newline
-GitLab\newline
+
+AWS\newline
+DigitalOcean\newline
 Docker\newline
 Ansible\newline
-phpMyAdmin\newline
-AWS (Still learning)\newline
-DigitalOcean\newline
-JIRA\newline
-G-Suite\newline
-Wordpress\newline
-Joomla\newline
-IoT development
+KVM\newline
+VMWare\newline
 \end{multicols}
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Experience}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Experience}}}}\newline
 
 \textbf{2020 - now      Anemo Analytics ApS}\newline
 My main focus during this position is to develop, improve and deploy our on-prem analytics solution to customers
-around the world. The platform stack consists of ArangoDB, Python 3.8 and Docker. Through the companys
+around the world. The platform stack consists of ArangoDB, Python 3.8 and Docker. Through the company's
 proprietary analytics models we provide customers real time analysis of their parks, and help them improve the
-overall performance of their turbines, and through this we can extend the lifespan of their turbines.\newline
+overall performance of their turbines, and through this we can extend the lifespan of their turbines by
+minimizing the wear and tear on essential components. Specifically then I build all the infrastructure required
+to automate and support running the models our data scientists come up with.\newline
 
 \textbf{2014 - 2019     Silicom Denmark A/S} (formerly known as Fiberblaze A/S)\newline
 I worked for Silicom as part of my Data Technician education. I was the sole fulltime IT technician during my
 employment with Silicom. I managed everything from end user support to infrastructure deployment and
-maintenance. I also worked on several internal software projects that helped maintain the business aswell as
-proof of contect projects for our customers.\newline
+maintenance. I also worked on several internal software projects that helped maintain the business as well as
+proof of concept projects for our customers.\newline
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Recommendations}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Recommendations}}}}\newline
 
 \textbf{Henrik Lilja}, CEO of Silicom Denmark A/S\newline
 I have had the pleasure to work with Morten at Fiberblaze, later Silicom Denmark, for the last four years where
@@ -80,24 +109,24 @@ of positions where he can use his keen interest in the latest IT technologies.\n
 
 \newpage
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Software Projects}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Software Projects}}}}\newline
 
 \textbf{Four Seven Four}\newline
-\textcolor{mygreen}{https://gitlab.com/jakeobsen/foursevenfour/blob/master/474.py}\newline
+\textcolor{green}{https://gitlab.com/jakeobsen/foursevenfour/blob/master/474.py}\newline
 This is my personal time tracking software, I wrote this program because I needed an efficient way to keep track
-of my time at work, the program stores timestamps in an sqlite database and by calculating the deltas between
+of my time at work, the program stores timestamps in an SQLite database and by calculating the deltas between
 the stored timestamps, the program can figure out how much time I have spent at work. I also use this program to
 figure out if I need time off due to overtime.\newline
 
 \textbf{EBS - External Backup Script}\newline
-\textcolor{mygreen}{https://gitlab.com/jakeobsen/ebs/blob/master/ebs}\newline
+\textcolor{green}{https://gitlab.com/jakeobsen/ebs/blob/master/ebs}\newline
 EBS is designed to synchronizes a folder on an internal disk, with a folder on an external disk. Making it
 possible to do automated external rotated backups. I use it with Dirvish, to synchronize the backup structure,
 with an external disk. The external disk is rotated on a weekly basis. I initially wrote EBS as a bash shell
 script, and then later rewrote it in Python.\newline
 
 \textbf{tempager.py}\newline
-\textcolor{mygreen}{https://gitlab.com/jakeobsen/monitoring-plugins/blob/master/tempager.py}\newline
+\textcolor{green}{https://gitlab.com/jakeobsen/monitoring-plugins/blob/master/tempager.py}\newline
 I needed a small plugin that could read the temperature data from a legacy sensor in our datacenter. The sensor
 proved to be difficult to parse, as the output from the sensor was in a non compliant JSON format, and the http
 service did not send proper response headers. I had to create my own TCP HTTP request using a telnet plugin,
@@ -105,41 +134,41 @@ then use regular expressions to fix the response, and make it JSON compliant, be
 Munin or Nagios.\newline
 
 \textbf{networkscanner}\newline
-\textcolor{mygreen}{https://gitlab.com/jakeobsen/networkscanner/blob/master/networkscanner.py}\newline
+\textcolor{green}{https://gitlab.com/jakeobsen/networkscanner/blob/master/networkscanner.py}\newline
 I needed a tool to scan and collect information about our network and I needed it to be automatic. This tool
-scans a a network for hosts using nmap and arpscan, and collects the results into a data object. It then scans
+scans a network for hosts using nmap and arpscan, and collects the results into a data object. It then scans
 each host to find open ports and updates the data object accordingly. Once done the script will save the result
-in either a mysql database or json file and print a report. The tool can be run unattended to update the
+in either a MySQL database or JSON file and print a report. The tool can be run unattended to update the
 database, and a report can be printed from the database without having to scan.\newline
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Other Projects}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Other Projects}}}}\newline
 
 \textbf{2019      Graduation Ansible Project}\newline
-\textcolor{mygreen}{https://gitlab.com/jakeobsen/ansible-svendeprove}\newline
+\textcolor{green}{https://gitlab.com/jakeobsen/ansible-svendeprove}\newline
 I decided to use Ansible as part of my Data Technician graduation project.  The goal was to build a Wordpress
 web hosting company using virtual machines on a VMware based infrastructure. I used  a dedicated virtual machine
-as my Ansible server, three web servers and one mysql server. I also had a Synology fileserver which exported an
+as my Ansible server, three web servers and one MySQL server. I also had a Synology fileserver which exported an
 NFS share that was mounted in the web servers webroot path. The Ansible configuration will deploy the necessary
 configuration on all servers and automatically configure everything required.\newline
 
 \textbf{2018      Interviews @ Vi elsker 90'erne (We love the 90’s)}\newline
-\textcolor{mygreen}{https://www.facebook.com/vielsker/videos/1898307746886069/}\newline
+\textcolor{green}{https://www.facebook.com/vielsker/videos/1898307746886069/}\newline
 I was in charge of the video production for the interviews filmed at “Vi Elsker 90'erne Rødovre”. At the same
 time I was training a new camera man for our video team. Together with “Lille Lars” we filmed 16 interviews with
 various known artists and afterwards I edited the content.\newline
 
 \textbf{2017 - 2018   DJ Skoge og Bassministeriet}\newline
-\textcolor{mygreen}{https://www.tv2lorry.dk/artikel/djs-skabte-fest-paa-julemaerkehjem-med-stor-check}\newline
+\textcolor{green}{https://www.tv2lorry.dk/artikel/djs-skabte-fest-paa-julemaerkehjem-med-stor-check}\newline
 “DJ Skoge og Bassministeriet” was a live DJ show where we played 90's music (and early 2000's) on Facebook and
 later on Twitch. On Facebook alone we had around 5.6 million watched minutes during the season and around 2.2
 million views. My job on the team were to manage the video setup. I configured our cameras, video broadcasting
 software and edited some of our released videos. We also raised 204.501 DKK (about 30.000 USD) for the Christmas
 Seal Foundation Home (Julemærkehjem) in Roskilde.\newline
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Voluntary work}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Voluntary work}}}}\newline
 
 \textbf{2010 - 2017   Radio 10FM}\newline
-In 2010 I joined Radio 10FM as a radiohost where I made a monthly music program. After seeing the state of the
+In 2010 I joined Radio 10FM as a radio host where I made a monthly music program. After seeing the state of the
 radio stations IT infrastructure, I started helping out by providing simple support. Later I helped the radio
 transition into the internet era by rebuilding the infrastructure using modern technology. And eventually I
 assumed full responsibility for the IT infrastructure.\newline
@@ -161,13 +190,13 @@ base. After reaching our maximum capacity in 2010 we decided to end our free hos
 Dinhost as a paid web hosting provider. We spent the next year planning and rebuild the company from scratch. In
 2015 the company was sold to Meebox.\newline
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Education}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Education}}}}\newline
 
 \textbf{2014 - 2019}   Infrastructure Data Technician, TEC Ballerup\newline
 \textbf{2009}          10th form-level school-leaving examination (of the Danish Folkeskole)\newline
 \textbf{2008}          9th form-level school-leaving examination (of the Danish Folkeskole)\newline
 
-\textcolor{mygreen}{{\fontsize{13}{16}\textbf{{Languages}}}}\newline
+\textcolor{green}{{\fontsize{13}{16}\textbf{{Languages}}}}\newline
 
 \textbf{Danish}        Native language, speaks and writes fluently\newline
 \textbf{English}       Second language, speaks and writes fluently\newline

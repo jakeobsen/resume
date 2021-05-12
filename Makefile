@@ -5,7 +5,7 @@ SHELL=/bin/zsh
 
 all: ## Compile paper
 	xelatex cv.tex
-	xdotool search --class mupdf key --window %@ r
+#	xdotool search --class mupdf key --window %@ r
 
 clean: ## Clean output files
 	rm cv.aux cv.log cv.pdf
